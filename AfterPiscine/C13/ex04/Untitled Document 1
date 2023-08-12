@@ -1,0 +1,33 @@
+/*void print_btree(t_btree *root, int level)
+{
+    int l_left = level;
+    int l_right = level;
+    if(root == NULL)
+        printf("No root");
+    if(level == 0)
+        printf("---");    
+    printf("%d\n", *(int *)root->item);
+    if(root->left)
+    {
+        l_left = l_left + 1;
+        printf("left level: %d\n", l_left);
+        print_btree(root->left, l_left);
+    }
+    if(root->right)
+    {
+        l_right = l_right + 1;
+        printf("---right level:%d\n", l_right);
+        print_btree(root->right, l_right);
+    }
+}*/
+
+void treeprint(t_btree *root, int level)
+{
+        if (root == NULL)
+                return;
+        for (int i = 0; i < level; i++)
+                printf(i == level - 1 ? "|-" : "  ");
+        printf("%d\n", *(int *)root->item);
+        treeprint(root->left, level + 1);
+        treeprint(root->right, level + 1);
+}
